@@ -1,18 +1,26 @@
 <template>
-  <div id="app">
-    <Header></Header>
-    <PostList></PostList>
+  <div>
+    <el-row>
+      <el-col :span="24">
+        <div class="grid-content">
+          <img class="codeimg" src="@/assets/images/cnode.svg" alt="">
+          <ul class="navlist">
+            <li><a href="">首页</a></li>
+            <li><a href="">新手入门</a></li>
+            <li><a href="">API</a></li>
+            <li><a href="">关于</a></li>
+            <li><a href="">注册</a></li>
+            <li><a href="">登录</a></li>
+          </ul>
+        </div>
+        </el-col>
+     </el-row>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
-import PostList from '@/components/PostList.vue'
   export default {
-    components: {
-      Header,
-      PostList
-    }
+    
   }
 </script>
 
