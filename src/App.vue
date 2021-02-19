@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Header></Header>
-    <PostList></PostList>
+    <div class="main">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -17,33 +19,9 @@ import PostList from '@/components/PostList.vue'
 </script>
 
 <style scoped>
-.grid-content {
-  height: 50px;
-  background: #444444;
-  font-size: 14px;
-}
-.codeimg {
-  max-height: 30px;
-  max-width: 120px;
-  margin-left: 30px;
-  margin-top: 10px;
-  float: left;
-}
-.navlist {
-  float: right;
-  list-style: none;
-  display: flex;
-  width: 355px;
-  height: 40px;
-}
-.navlist li {
-  flex: 1;
-  text-align: center;
-}
-.navlist li a {
-  width: 56px;
-  display: block;
-  text-decoration: none;
-  color: #ccc;
+.main {
+  background: #E1E1E1;
+  padding: 0 200px;
+  padding-right: 400px;
 }
 </style>

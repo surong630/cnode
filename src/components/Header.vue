@@ -1,7 +1,5 @@
 <template>
   <div>
-    <el-row>
-      <el-col :span="24">
         <div class="grid-content">
           <img class="codeimg" src="@/assets/images/cnode.svg" alt="">
           <ul class="navlist">
@@ -13,8 +11,6 @@
             <li><a href="">登录</a></li>
           </ul>
         </div>
-        </el-col>
-     </el-row>
   </div>
 </template>
 
@@ -33,13 +29,14 @@
 .codeimg {
   max-height: 30px;
   max-width: 120px;
-  margin-left: 30px;
+  margin-left: 182px;
   margin-top: 10px;
   float: left;
 }
 .navlist {
   float: right;
   list-style: none;
+  margin-right: 132px;
   display: flex;
   width: 355px;
   height: 40px;
