@@ -71,6 +71,11 @@
     },
     beforeMount() {
       this.get()
+    },
+    watch:{
+      '$route'(to,from) {
+        this.get()
+      }
     }
   }
 </script>

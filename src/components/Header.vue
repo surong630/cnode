@@ -1,7 +1,9 @@
 <template>
   <div>
         <div class="grid-content">
-          <img class="codeimg" src="@/assets/images/cnode.svg" alt="">
+          <router-link to="/">
+            <img class="codeimg" src="@/assets/images/cnode.svg" alt="">
+          </router-link>
           <ul class="navlist">
             <li><a href="">首页</a></li>
             <li><a href="">新手入门</a></li>
