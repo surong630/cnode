@@ -1,7 +1,7 @@
 <template>
   <div class="PostList">
-    <div class="post">
-      <ul>
+    <div  class="post">
+      <ul  v-if="!loading">
         <li>
           <div class="toobar">
             <span>全部</span>
@@ -22,14 +22,16 @@
           <router-link :to="{
             name: 'post_content',
             params: {
-              id: post.id
+              id: post.id,
+              name: post.author.loginname
             }
           }">{{post.title}}</router-link>
           <span class="last_reply">{{post.last_reply_at | formatDay}}</span>
         </li>
       </ul>
     </div>
-     <el-table v-if= 'loading'
+     <el-table
+     v-if="loading"
     v-loading="loading"
     element-loading-text="拼命加载中"
     element-loading-spinner="el-icon-loading"
@@ -49,20 +51,21 @@ export default {
     }
   },
   methods:{
-    touch() {
+    good() {
       this.$http.get('https://cnodejs.org/api/v1/topics', {
         page: 1,
         limit: 20
       }).then((res) => {
         this.posts = res.data.data
         this.loading = false
+        console.log(state.posts)
       }).catch((err) => {
         console.log(err);
       })
     }
   },
   beforeMount() {
-    this.touch()
+    this.good()
   }
 }
 </script>

@@ -16,13 +16,13 @@
         <div class="topbar">{{post.reply_count}}回复</div>
         <div v-for="(replie,index) in post.replies"  class="replySec markdown-body">
           <div class="replyUp">
-            <router-link :to="{
-              name:'user_info',
-              params:{
-                name: replie.author.loginname
-              }
-            }">
-          <img :src="replie.author.avatar_url" alt="">
+          <router-link :to="{
+            name: 'user_info',
+            params: {
+              name: replie.author.loginname
+            }
+          }">
+            <img :src="replie.author.avatar_url" alt="">
           </router-link>
           <router-link :to="{
               name:'user_info',
@@ -30,7 +30,7 @@
                 name: replie.author.loginname
               }
             }">
-          <span>{{replie.author.loginname}}</span>
+            <span>{{replie.author.loginname}}</span>
           </router-link>
           <span>{{index+1}}楼</span>
           <span>{{replie.create_at | formatDay}}</span>
@@ -59,13 +59,18 @@
         post: {}
       }
     },
-    beforeMount() {
+    methods:{
+      get() {
       this.$http.get(`https://cnodejs.org/api/v1/topic/${this.$route.params.id}`).then((res) => {
-        this.loading = false
         this.post = res.data.data
+      this.loading = false
       }).catch((err) => {
         console.log(err);
       })
+    }
+    },
+    beforeMount() {
+      this.get()
     }
   }
 </script>
