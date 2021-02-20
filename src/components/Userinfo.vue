@@ -65,12 +65,12 @@
     methods:{
       getUser() {
         this.$http.get(`https://cnodejs.org/api/v1/user/${this.$route.params.name}`)
-      .then(res => {
-        this.userInfo = res.data.data
-        this.loading = false
-      }).catch(err => {
-        console.log(err);
-      })
+        .then(res => {
+          this.userInfo = res.data.data
+          this.loading = false
+        }).catch(err => {
+          console.log(err);
+        })
       }
     },
     beforeMount() {

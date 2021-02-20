@@ -28,15 +28,26 @@
           }">{{post.title}}</router-link>
           <span class="last_reply">{{post.last_reply_at | formatDay}}</span>
         </li>
+        <li>
+          <el-pagination
+          :background = 'true'
+          layout="prev, pager, next"
+          :total="1000"
+          @prev-click = 'prev'
+          :current-page.sync="currenIndex"
+          @current-change = 'change'
+          >
+        </el-pagination>
+        </li>
       </ul>
     </div>
-     <el-table
-     v-if="loading"
-    v-loading="loading"
-    element-loading-text="拼命加载中"
-    element-loading-spinner="el-icon-loading"
-    element-loading-background="#E1E1E1"
-    style="width: 100%">
+    <el-table
+      v-if="loading"
+      v-loading="loading"
+      element-loading-text="拼命加载中"
+      element-loading-spinner="el-icon-loading"
+      element-loading-background="#E1E1E1"
+      style="width: 100%">
     </el-table>
   </div>
 </template>
@@ -47,18 +58,28 @@ export default {
   data() {
     return {
       loading: true,
-      posts: []
+      posts: [],
+      currenIndex: 1
     }
   },
   methods:{
+    change() {
+      console.log(this.currenIndex)
+      this.good()
+    },
+    prev() {
+      this.currenIndex = this.currenIndex--;
+      this.good()
+    },
     good() {
       this.$http.get('https://cnodejs.org/api/v1/topics', {
-        page: 1,
-        limit: 20
+        params:{
+          page: this.currenIndex,
+          limit: 20
+        }
       }).then((res) => {
         this.posts = res.data.data
         this.loading = false
-        console.log(state.posts)
       }).catch((err) => {
         console.log(err);
       })
